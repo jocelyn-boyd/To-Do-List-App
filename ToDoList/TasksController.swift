@@ -14,6 +14,65 @@ class TasksController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+//    loadTasks()
+  }
+  
+  
+  @IBAction func AddTask(_ sender: UIBarButtonItem) {
+//    print("Add Button Pressed")
+    // set up alert controller
+    let alertController = UIAlertController(title: "Add Task", message: nil, preferredStyle: .alert)
+    
+    // set up the actions
+    let addAction = UIAlertAction(title: "Add", style: .default) {_ in
+      
+      // Grab textfield text
+      guard let name = alertController.textFields?.first?.text else { return }
+      
+      //create task
+      let newTask = Task(name: name)
+      
+      //add task
+      self.taskStore.addTask(newTask, at: 0)
+      
+      //reload data in table view
+      let indexPath = IndexPath(row: 0, section: 0)
+      self.tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+    
+    addAction.isEnabled = false
+    
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+    
+    // add the textfield
+    alertController.addTextField { (textfield) in
+      
+      textfield.placeholder = "Enter task name ..."
+      textfield.addTarget(self, action: #selector(self.handleTextChanged), for: .editingChanged)
+    }
+    
+    // add the actions
+    alertController.addAction(addAction)
+    alertController.addAction(cancelAction)
+    
+    // present alert controller
+    present(alertController, animated: true)
+  }
+  
+  
+  @objc private func handleTextChanged(_ sender: UITextField) {
+    
+    // Grab the alert controller and add action
+    guard let alertController = presentedViewController as? UIAlertController,
+          let addAction = alertController.actions.first,
+          let text = sender.text else { return }
+    
+    //Enable add action based on if text is empty or contains whitespace
+    addAction.isEnabled = !text.trimmingCharacters(in: .whitespaces).isEmpty
+  }
+  
+  
+  func loadTasks() {
     
     let todoTasks = [Task(name: "Meditate"), Task(name: "Buy Bananas"), Task(name: "Run a 5K")]
     let doneTasks = [Task(name: "Watch Netflix")]
@@ -30,12 +89,7 @@ extension TasksController {
     return section == 0 ? "To Do" : "Done"
   }
   
-  
-  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 54
-  }
-  
-  
+
   override func numberOfSections(in tableView: UITableView) -> Int {
     return taskStore.tasks.count
   }
@@ -45,10 +99,18 @@ extension TasksController {
     return taskStore.tasks[section].count
   }
   
+  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     cell.textLabel?.text = taskStore.tasks[indexPath.section][indexPath.row].name
     return cell
   }
   
+}
+
+extension TasksController {
+  
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    54
+  }
 }

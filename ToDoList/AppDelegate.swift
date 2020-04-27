@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    
+//    let taskStore = TaskStore()
+//        
+//        let todoTasks = [Task(name: "Meditate"), Task(name: "Buy Bananas"), Task(name: "Run a 5K")]
+//        let doneTasks = [Task(name: "Watch Netflix")]
+//        
+//        taskStore.tasks = [todoTasks, doneTasks]
+//        
+//        let tasksController = window?.rootViewController as? TasksController
+//        
+//    //    let tasksController = TasksController()
+//        tasksController.taskStore = taskStore
+    
     return true
   }
 
