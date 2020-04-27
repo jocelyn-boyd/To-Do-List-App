@@ -10,11 +10,21 @@ import UIKit
 
 class TasksController: UITableViewController {
   
-  var taskStore = TaskStore()
+  var taskStore: TaskStore! {
+    didSet {
+      // Get data
+      taskStore.tasks = TasksUtility.fetch() ?? [[Task](), [Task]()]
+      
+      // Reload tableView
+      tableView.reloadData()
+    }
+  }
   
+  
+  // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    view.backgroundColor = .systemBackground
   }
   
   
@@ -38,6 +48,9 @@ class TasksController: UITableViewController {
       //reload data in table view
       let indexPath = IndexPath(row: 0, section: 0)
       self.tableView.insertRows(at: [indexPath], with: .automatic)
+      
+      // Save
+      TasksUtility.save(self.taskStore.tasks)
     }
     
     addAction.isEnabled = false
@@ -71,14 +84,19 @@ class TasksController: UITableViewController {
     addAction.isEnabled = !text.trimmingCharacters(in: .whitespaces).isEmpty
   }
   
+  func configureViewController() {
+      view.backgroundColor = .systemBackground
+      navigationController?.navigationBar.prefersLargeTitles = true
+  }
 
 }
+
 
 // MARK: Data Source
 extension TasksController {
   
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return section == 0 ? "To Do" : "Done"
+    return section == 0 ? "Outstanding Tasks" : "Complete Tasks"
   }
   
 
@@ -100,11 +118,13 @@ extension TasksController {
   
 }
 
+
 extension TasksController {
   
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     54
   }
+  
   
   override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     
@@ -119,6 +139,9 @@ extension TasksController {
       // Reload tableView
       tableView.deleteRows(at: [indexPath], with: .automatic)
       
+      // Save
+      TasksUtility.save(self.taskStore.tasks)
+      
       // Indicate that the action was performed
       completionHandler(true)
     }
@@ -128,6 +151,7 @@ extension TasksController {
     
     return UISwipeActionsConfiguration(actions: [deleteAction])
   }
+  
   
   override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     
@@ -147,6 +171,9 @@ extension TasksController {
       
       // Reload tableView
       tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
+      
+      // Save
+      TasksUtility.save(self.taskStore.tasks)
       
       // Indicate the action was performed
       completionHandler(true)
