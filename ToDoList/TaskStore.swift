@@ -22,7 +22,7 @@ class TaskStore {
   }
   
   
-  func removeTask(_ task: Task, at index: Int, isDone: Bool = false) -> Task {
+  @discardableResult func removeTask(at index: Int, isDone: Bool = false) -> Task {
     
     let section = isDone ? 1 : 0
     

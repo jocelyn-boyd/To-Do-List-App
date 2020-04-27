@@ -113,4 +113,31 @@ extension TasksController {
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     54
   }
+  
+  override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    
+    let deleteAction = UIContextualAction(style: .destructive, title: nil) { (action, sourceView, completionHandler) in
+      
+      // determine whether the task is 'isDone'
+      let isDone = self.taskStore.tasks[indexPath.section][indexPath.row].isDone
+      
+      // Remove the task from the appropriate array
+      self.taskStore.removeTask(at: indexPath.row, isDone: isDone)
+      
+      // Reload tableView
+      self.tableView.deleteRows(at: [indexPath], with: .automatic)
+      
+      // Indicate that the action was performed
+      completionHandler(true)
+    }
+    
+    deleteAction.image = UIImage(named: "delete")
+    deleteAction.backgroundColor = .red
+    
+    return UISwipeActionsConfiguration(actions: [deleteAction])
+  }
+  
+  override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    return nil
+  }
 }
