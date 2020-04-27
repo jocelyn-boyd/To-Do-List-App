@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		D8A5C2F92456602400C633E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A5C2F82456602400C633E1 /* AppDelegate.swift */; };
 		D8A5C2FB2456602400C633E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A5C2FA2456602400C633E1 /* SceneDelegate.swift */; };
-		D8A5C2FD2456602400C633E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A5C2FC2456602400C633E1 /* ViewController.swift */; };
 		D8A5C3002456602400C633E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8A5C2FE2456602400C633E1 /* Main.storyboard */; };
 		D8A5C3022456602800C633E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A5C3012456602800C633E1 /* Assets.xcassets */; };
 		D8A5C3052456602800C633E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8A5C3032456602800C633E1 /* LaunchScreen.storyboard */; };
+		D8A5C30F2456656C00C633E1 /* TasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A5C30E2456656C00C633E1 /* TasksController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D8A5C2F52456602400C633E1 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A5C2F82456602400C633E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8A5C2FA2456602400C633E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D8A5C2FC2456602400C633E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D8A5C2FF2456602400C633E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8A5C3012456602800C633E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8A5C3042456602800C633E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8A5C3062456602800C633E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8A5C30E2456656C00C633E1 /* TasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +58,10 @@
 			children = (
 				D8A5C2F82456602400C633E1 /* AppDelegate.swift */,
 				D8A5C2FA2456602400C633E1 /* SceneDelegate.swift */,
-				D8A5C2FC2456602400C633E1 /* ViewController.swift */,
 				D8A5C2FE2456602400C633E1 /* Main.storyboard */,
 				D8A5C3012456602800C633E1 /* Assets.xcassets */,
 				D8A5C3032456602800C633E1 /* LaunchScreen.storyboard */,
+				D8A5C30E2456656C00C633E1 /* TasksController.swift */,
 				D8A5C3062456602800C633E1 /* Info.plist */,
 			);
 			path = ToDoList;
@@ -138,8 +138,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8A5C2FD2456602400C633E1 /* ViewController.swift in Sources */,
 				D8A5C2F92456602400C633E1 /* AppDelegate.swift in Sources */,
+				D8A5C30F2456656C00C633E1 /* TasksController.swift in Sources */,
 				D8A5C2FB2456602400C633E1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,7 +294,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jocelynboyd.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +312,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jocelynboyd.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
