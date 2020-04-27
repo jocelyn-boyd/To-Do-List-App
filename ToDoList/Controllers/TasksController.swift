@@ -14,7 +14,7 @@ class TasksController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    loadTasks()
+
   }
   
   
@@ -71,15 +71,7 @@ class TasksController: UITableViewController {
     addAction.isEnabled = !text.trimmingCharacters(in: .whitespaces).isEmpty
   }
   
-  
-  func loadTasks() {
-    
-    let todoTasks = [Task(name: "Meditate"), Task(name: "Buy Bananas"), Task(name: "Run a 5K")]
-    let doneTasks = [Task(name: "Watch Netflix")]
-    
-    taskStore.tasks = [todoTasks, doneTasks]
-  }
-  
+
 }
 
 // MARK: Data Source
@@ -125,7 +117,7 @@ extension TasksController {
       self.taskStore.removeTask(at: indexPath.row, isDone: isDone)
       
       // Reload tableView
-      self.tableView.deleteRows(at: [indexPath], with: .automatic)
+      tableView.deleteRows(at: [indexPath], with: .automatic)
       
       // Indicate that the action was performed
       completionHandler(true)
@@ -138,6 +130,31 @@ extension TasksController {
   }
   
   override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    return nil
+    
+    let doneAction = UIContextualAction(style: .normal, title: nil) { (action, sourceView, completionHandler) in
+      
+      // Toffle that the task is done
+      self.taskStore.tasks[0][indexPath.row].isDone = true
+      
+      // Remove the task from the array containing the todo tasks
+      let doneTask = self.taskStore.removeTask(at: indexPath.row)
+      
+      // Reload tableView
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+      
+      // Add the task from the array containing done tasks
+      self.taskStore.addTask(doneTask, at: 0, isDone: true)
+      
+      // Reload tableView
+      tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
+      
+      // Indicate the action was performed
+      completionHandler(true)
+    }
+    
+    doneAction.image = UIImage(named: "done")
+    doneAction.backgroundColor = .green
+    
+    return indexPath.section == 0 ? UISwipeActionsConfiguration(actions: [doneAction]) : nil
   }
 }
