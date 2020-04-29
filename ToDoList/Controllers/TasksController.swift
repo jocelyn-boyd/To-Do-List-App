@@ -10,15 +10,8 @@ import UIKit
 
 class TasksController: UITableViewController {
   
-  var taskStore: TaskStore! {
-    didSet {
-      // Get data
-      taskStore.tasks = TasksUtility.fetch() ?? [[Task](), [Task]()]
-      
-      // Reload tableView
-      tableView.reloadData()
-    }
-  }
+  var tasks = [Task]()
+  var taskList = [TaskList]()
   
   
   // MARK: - Lifecycle
@@ -26,6 +19,11 @@ class TasksController: UITableViewController {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
   }
+  
+  // making a function to load all the tasks from the persistence
+  
+  
+  // organize the tasks and populate the tasks list
   
   
   @IBAction func AddTask(_ sender: UIBarButtonItem) {
