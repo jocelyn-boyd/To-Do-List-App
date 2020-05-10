@@ -22,7 +22,7 @@ class TasksController: UITableViewController {
     view.backgroundColor = .systemBackground
   }
 
-  
+  // MARK: - IBAction Method
   @IBAction func AddTask(_ sender: UIBarButtonItem) {
 //    print("Add Button Pressed")
     // set up alert controller
@@ -79,6 +79,7 @@ class TasksController: UITableViewController {
     addAction.isEnabled = !text.trimmingCharacters(in: .whitespaces).isEmpty
   }
   
+  // MARK: Methods
   func configureViewController() {
       view.backgroundColor = .systemBackground
       navigationController?.navigationBar.prefersLargeTitles = true
