@@ -58,23 +58,3 @@ struct PersistenceHelper<T: Codable> {
   private var url: URL { return filePathFromDocumentsDirectory(name: fileName) }
 }
 
-
-struct TaskPersistence {
-  
-  static let manager = TaskPersistence()
-  
-  
-  func save(newTask: Task) throws {
-    try persistenceHelper.save(newElement: newTask)
-  }
-  
-  
-  func getTask() throws -> [Task] {
-    return try persistenceHelper.getObjects()
-  }
-  
-  
-  private let persistenceHelper = PersistenceHelper<Task>(fileName: "tasks.plist")
-  private init() {}
-  
-}

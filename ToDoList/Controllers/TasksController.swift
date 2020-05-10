@@ -10,21 +10,18 @@ import UIKit
 
 class TasksController: UITableViewController {
   
-  var tasks = [Task]()
-  var taskList = [TaskList]()
-  
+  // MARK: Properties
+  var taskStore = TaskStore()
+//  var tasks = [Task]()
+//  var taskList = [TaskList]()
+//  
   
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
   }
-  
-  // making a function to load all the tasks from the persistence
-  
-  
-  // organize the tasks and populate the tasks list
-  
+
   
   @IBAction func AddTask(_ sender: UIBarButtonItem) {
 //    print("Add Button Pressed")
@@ -102,12 +99,12 @@ extension TasksController {
     return taskStore.tasks.count
   }
   
-  
+  //
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return taskStore.tasks[section].count
   }
   
-  
+  //
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     cell.textLabel?.text = taskStore.tasks[indexPath.section][indexPath.row].name
@@ -116,7 +113,7 @@ extension TasksController {
   
 }
 
-
+// MARK: Delegate
 extension TasksController {
   
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -155,7 +152,7 @@ extension TasksController {
     
     let doneAction = UIContextualAction(style: .normal, title: nil) { (action, sourceView, completionHandler) in
       
-      // Toffle that the task is done
+      // Toggle that the task is done
       self.taskStore.tasks[0][indexPath.row].isDone = true
       
       // Remove the task from the array containing the todo tasks

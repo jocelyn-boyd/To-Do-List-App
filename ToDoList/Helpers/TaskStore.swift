@@ -11,6 +11,8 @@ import Foundation
 class TaskStore {
   
   // this Task array is going to host the two sections of data
+  // Outstanding Tasks at index of 0
+  // Completed Tasks at index of 1
   var tasks = [[Task](), [Task]()]
   
   

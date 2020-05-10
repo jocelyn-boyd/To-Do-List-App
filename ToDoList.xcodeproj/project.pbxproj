@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D83799EE245A132B00173BC5 /* TaskPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83799ED245A132B00173BC5 /* TaskPersistenceManager.swift */; };
 		D84624A8245678ED00D1AC24 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84624A7245678ED00D1AC24 /* Task.swift */; };
 		D84624AA2456796100D1AC24 /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84624A92456796100D1AC24 /* TaskStore.swift */; };
 		D86C2B8F2457603B0033C395 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C2B8E2457603B0033C395 /* PersistenceHelper.swift */; };
-		D88FCC4F2458D69400F905BE /* TaskOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88FCC4E2458D69400F905BE /* TaskOrganizer.swift */; };
 		D88FCC512458D72A00F905BE /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88FCC502458D72A00F905BE /* TaskList.swift */; };
 		D8A5C2F92456602400C633E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A5C2F82456602400C633E1 /* AppDelegate.swift */; };
 		D8A5C2FB2456602400C633E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A5C2FA2456602400C633E1 /* SceneDelegate.swift */; };
@@ -22,10 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D83799ED245A132B00173BC5 /* TaskPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPersistenceManager.swift; sourceTree = "<group>"; };
 		D84624A7245678ED00D1AC24 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D84624A92456796100D1AC24 /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 		D86C2B8E2457603B0033C395 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
-		D88FCC4E2458D69400F905BE /* TaskOrganizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOrganizer.swift; sourceTree = "<group>"; };
 		D88FCC502458D72A00F905BE /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		D8A5C2F52456602400C633E1 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A5C2F82456602400C633E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D83799EC245A130200173BC5 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				D86C2B8E2457603B0033C395 /* PersistenceHelper.swift */,
+				D83799ED245A132B00173BC5 /* TaskPersistenceManager.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		D8A5C2EC2456602400C633E1 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +81,7 @@
 				D8A5C3062456602800C633E1 /* Info.plist */,
 				D8F53DF22456AC69001F53E8 /* Models */,
 				D8F53DF32456AC75001F53E8 /* Controllers */,
+				D83799EC245A130200173BC5 /* Persistence */,
 				D8F53DF42456AC84001F53E8 /* Helpers */,
 				D8F53DF52456AC8A001F53E8 /* System */,
 			);
@@ -100,8 +110,6 @@
 			children = (
 				D84624A92456796100D1AC24 /* TaskStore.swift */,
 				D8F53DF82456BB2D001F53E8 /* TasksUtility.swift */,
-				D86C2B8E2457603B0033C395 /* PersistenceHelper.swift */,
-				D88FCC4E2458D69400F905BE /* TaskOrganizer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -190,8 +198,8 @@
 			files = (
 				D84624AA2456796100D1AC24 /* TaskStore.swift in Sources */,
 				D84624A8245678ED00D1AC24 /* Task.swift in Sources */,
-				D88FCC4F2458D69400F905BE /* TaskOrganizer.swift in Sources */,
 				D88FCC512458D72A00F905BE /* TaskList.swift in Sources */,
+				D83799EE245A132B00173BC5 /* TaskPersistenceManager.swift in Sources */,
 				D8A5C2F92456602400C633E1 /* AppDelegate.swift in Sources */,
 				D86C2B8F2457603B0033C395 /* PersistenceHelper.swift in Sources */,
 				D8F53DF92456BB2D001F53E8 /* TasksUtility.swift in Sources */,
