@@ -43,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D830B2312467A2A100437ED2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D8A5C2FE2456602400C633E1 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D8A5C2EC2456602400C633E1 = {
 			isa = PBXGroup;
 			children = (
@@ -62,8 +70,8 @@
 		D8A5C2F72456602400C633E1 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				D8A5C2FE2456602400C633E1 /* Main.storyboard */,
 				D8A5C3062456602800C633E1 /* Info.plist */,
+				D830B2312467A2A100437ED2 /* View */,
 				D8F53DF22456AC69001F53E8 /* Models */,
 				D8F53DF32456AC75001F53E8 /* Controllers */,
 				D8F53DF42456AC84001F53E8 /* Helpers */,

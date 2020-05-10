@@ -11,22 +11,31 @@ import UIKit
 class TasksController: UITableViewController {
   
   // MARK: Properties
-  var taskStore = TaskStore()
+  var taskStore: TaskStore! {
+    didSet {
+      // Get data
+      taskStore.tasks = TasksUtility.fetch() ?? [[Task](), [Task]()]
+      
+      // Reload table view
+      tableView.reloadData()
+    }
+  }
+  
   
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .systemBackground
+    configureViewController()
   }
 
   // MARK: - IBAction Method
   @IBAction func AddTask(_ sender: UIBarButtonItem) {
-//    print("Add Button Pressed")
+
     // set up alert controller
     let alertController = UIAlertController(title: "Add Task", message: nil, preferredStyle: .alert)
     
     // set up the actions
-    let addAction = UIAlertAction(title: "Add", style: .default) {_ in
+    let addAction = UIAlertAction(title: "Add", style: .default) { _ in
       
       // Grab textfield text
       guard let name = alertController.textFields?.first?.text else { return }
@@ -60,11 +69,12 @@ class TasksController: UITableViewController {
     alertController.addAction(addAction)
     alertController.addAction(cancelAction)
     
-    // present alert controller
+    // Present
     present(alertController, animated: true)
   }
   
   
+  // MARK: - Private Methods
   @objc private func handleTextChanged(_ sender: UITextField) {
     
     // Grab the alert controller and add action
@@ -76,8 +86,8 @@ class TasksController: UITableViewController {
     addAction.isEnabled = !text.trimmingCharacters(in: .whitespaces).isEmpty
   }
   
-  // MARK: Methods
-  func configureViewController() {
+  
+  private func configureViewController() {
       view.backgroundColor = .systemBackground
       navigationController?.navigationBar.prefersLargeTitles = true
   }
@@ -85,11 +95,11 @@ class TasksController: UITableViewController {
 }
 
 
-// MARK: Data Source
+// MARK: - Data Source
 extension TasksController {
   
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return section == 0 ? "Outstanding Tasks" : "Complete Tasks"
+    return section == 0 ? "Outstanding Tasks" : "Completed Tasks"
   }
   
 
@@ -97,12 +107,14 @@ extension TasksController {
     return taskStore.tasks.count
   }
   
-  //
+  
+  
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return taskStore.tasks[section].count
   }
   
-  //
+  
+  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     cell.textLabel?.text = taskStore.tasks[indexPath.section][indexPath.row].name
@@ -111,7 +123,7 @@ extension TasksController {
   
 }
 
-// MARK: Delegate
+// MARK: - Delegate
 extension TasksController {
   
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

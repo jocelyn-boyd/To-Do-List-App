@@ -22,7 +22,6 @@ class TasksUtility {
   // fetch
   static func fetch() -> [[Task]]? {
     guard let unarchivedData = UserDefaults.standard.object(forKey: key) as? Data else { return nil }
-    
     return try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(unarchivedData) as? [[Task]] ?? [[]]
   }
   

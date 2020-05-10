@@ -24,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Grab the TasksController
     let tasksController = window?.rootViewController?.children.first as? TasksController
     
+    // Grab the taskStore accordingly
     tasksController?.taskStore = taskStore
   }
 
