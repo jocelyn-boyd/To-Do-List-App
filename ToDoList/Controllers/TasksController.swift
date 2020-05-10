@@ -12,9 +12,6 @@ class TasksController: UITableViewController {
   
   // MARK: Properties
   var taskStore = TaskStore()
-//  var tasks = [Task]()
-//  var taskList = [TaskList]()
-//  
   
   // MARK: - Lifecycle
   override func viewDidLoad() {
